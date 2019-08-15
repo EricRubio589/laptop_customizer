@@ -1,20 +1,16 @@
 import React from 'react';
+import './App.css';
+import Summary from './Summary';
+import Total from './Total';
 
 function Cart(props) {
-const summary = Object.keys(this.state.selected).map((feature, idx) => {
-    const featureHash = feature + '-' + idx;
-    const selectedOption = this.state.selected[feature];
-
-    return (
-      <div className="summary__option" key={featureHash}>
-        <div className="summary__option__label">{feature} </div>
-        <div className="summary__option__value">{selectedOption.name}</div>
-        <div className="summary__option__cost">
-          {USCurrencyFormat.format(selectedOption.cost)}
-        </div>
-      </div>
-    );
-  });
+  return(
+    <section className="main__summary">
+      <h2>Your cart</h2>
+      <Summary selected={props.selected} />
+      <Total selected={props.selected} />  
+    </section>
+  )    
 }
 
 export default Cart;
