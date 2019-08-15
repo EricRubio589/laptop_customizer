@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
-import slugify from 'slugify';
+// import slugify from 'slugify';
 
 import './App.css';
+import PartList from './PartsList'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+// const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+//   style: 'currency',
+//   currency: 'USD'
+// });
 
 class App extends Component {
   constructor(props){
@@ -54,8 +55,9 @@ class App extends Component {
       <main>
         <form className="main__form">
           <h2>Customize your laptop</h2>
-          {features}
+          <PartList features={this.props.features}/>
         </form>
+          <Cart selected={this.state.selected}/>
         </main>
     </div>  
         {/*///////////////////////Moved to Cart.js//////////////////////*/}
@@ -67,29 +69,29 @@ class App extends Component {
     </div> */}
   }
 
-  }
+  
 
-  render() {
-    const features = Object.keys(this.props.features).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const options = this.props.features[feature].map(item => {
-        const itemHash = slugify(JSON.stringify(item));
-        return (
-          <div key={itemHash} className="feature__item">
-            <input
-              type="radio"
-              id={itemHash}
-              className="feature__option"
-              name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
-              onChange={e => this.updateFeature(feature, item)}
-            />
-            <label htmlFor={itemHash} className="feature__label">
-              {item.name} ({USCurrencyFormat.format(item.cost)})
-            </label>
-          </div>
-        );
-      });
+  // render() {
+  //   const features = Object.keys(this.props.features).map((feature, idx) => {
+  //     const featureHash = feature + '-' + idx;
+  //     const options = this.props.features[feature].map(item => {
+  //       const itemHash = slugify(JSON.stringify(item));
+  //       return (
+  //         <div key={itemHash} className="feature__item">
+  //           <input
+  //             type="radio"
+  //             id={itemHash}
+  //             className="feature__option"
+  //             name={slugify(feature)}
+  //             checked={item.name === this.state.selected[feature].name}
+  //             onChange={e => this.updateFeature(feature, item)}
+  //           />
+  //           <label htmlFor={itemHash} className="feature__label">
+  //             {item.name} ({USCurrencyFormat.format(item.cost)})
+  //           </label>
+  //         </div>
+  //       );
+  //     });
       ///////////////////Moved to Parts///////////////////////////////////
       // return (
       //   <fieldset className="feature" key={featureHash}>
@@ -100,7 +102,7 @@ class App extends Component {
       //   </fieldset>
       // );
       ////////////////////////////////////////////////////////////////////
-    });
+    // });
 
 
     //////////////////////////Moved to Cart.js//////////////////////////////////
@@ -152,7 +154,7 @@ class App extends Component {
     // );
     //////////////////////////////////////////////////////////////////////
 
-  } 
+  
 }
 
 export default App;
