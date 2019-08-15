@@ -1,6 +1,6 @@
+import React from 'react';
 
-
-
+function Cart(props) {
 const summary = Object.keys(this.state.selected).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
     const selectedOption = this.state.selected[feature];
@@ -15,3 +15,6 @@ const summary = Object.keys(this.state.selected).map((feature, idx) => {
       </div>
     );
   });
+}
+
+export default Cart;

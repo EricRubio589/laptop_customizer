@@ -1,4 +1,6 @@
+import React from 'react';
 
+function Total(props) {
 const total = Object.keys(this.state.selected).reduce(
     (acc, curr) => acc + this.state.selected[curr].cost,
     0
@@ -27,3 +29,6 @@ return (
       </main>
     </div>
   );
+}
+
+export default Total;
