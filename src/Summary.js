@@ -8,7 +8,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 const Summary = (props) => {
 
-    Object.keys(props.selected).map(key => {
+    let options = Object.keys(props.selected).map(key => {
     
         return (
         <div className="summary__option" key={key}>
@@ -20,6 +20,8 @@ const Summary = (props) => {
         </div>
         );
     });
+
+    return options;
 
 
 }

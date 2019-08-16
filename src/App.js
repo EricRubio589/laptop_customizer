@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 // import slugify from 'slugify';
 
 import './App.css';
-import PartList from './PartsList'
+import PartsList from './PartsList'
+import Cart from './Cart';
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -48,18 +49,24 @@ class App extends Component {
   }
 
   render() {
-    <div className="App">
-      <header>
-        <h1>ELF Computing | Laptops</h1>
-      </header>
-      <main>
-        <form className="main__form">
-          <h2>Customize your laptop</h2>
-          <PartList features={this.props.features}/>
-        </form>
-          <Cart selected={this.state.selected}/>
-        </main>
-    </div>  
+    return (
+      <div className="App">
+        <header>
+          <h1>ELF Computing | Laptops</h1>
+        </header>
+        <main>
+          <form className="main__form">
+            <h2>Customize your laptop</h2>
+            <PartsList 
+            features={this.props.features}
+            selected={this.state.selected}
+            updateFeature={this.updateFeature}
+            />
+          </form>
+            <Cart selected={this.state.selected}/>
+          </main>
+      </div> 
+    ) 
         {/*///////////////////////Moved to Cart.js//////////////////////*/}
         {/* <section className="main__summary">
           <h2>Your cart</h2>
